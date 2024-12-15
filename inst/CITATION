@@ -1,0 +1,27 @@
+citHeader("To cite the R package and data in publications use:")
+
+bibentry(
+  key      = "mapineqr",
+  bibtype  = "Manual",
+  title    = "mapineqr. Access Mapineq inequality indicators via API",
+  author   = person("Egor", "Kotov", , "kotov.egor@gmail.com",
+              role = c("aut", "cre"),
+              comment = c(ORCID = "0000-0001-6690-5345")),
+  year     = "2024",
+  url      = "https://github.com/e-kotov/mapineqr",
+  doi      = "10.32614/CRAN.package.mapineqr"
+)
+
+bibentry(
+  key      = "mapineq_link",
+  bibtype  = "Misc",
+  title    = "Mapineq Link: Geospatial Dashboard and Database",
+  author   = c(
+    person("Melinda C", "Mills"),
+    person("Douglas", "Leasure")
+  ),
+  year     = "2024",
+  month    = "October",
+  publisher = "Mapineq deliverables. Turku: INVEST Research Flagship Centre / University of Turku",
+  doi      = "10.5281/zenodo.13864000"
+)
