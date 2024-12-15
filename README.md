@@ -14,6 +14,7 @@ and dashboard (product of the [Mapineq](https://mapineq.eu/) proejct)
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/mapineqr.png)](https://CRAN.R-project.org/package=mapineqr)
+[![R-CMD-check](https://github.com/e-kotov/mapineqr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/e-kotov/mapineqr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of mapineqr is to …

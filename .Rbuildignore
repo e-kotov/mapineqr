@@ -7,3 +7,4 @@
 ^tools$
 ^CITATION\.cff$
 ^codemeta\.json$
+^\.github$
