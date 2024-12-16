@@ -36,6 +36,18 @@
   "softwareSuggestions": [
     {
       "@type": "SoftwareApplication",
+      "identifier": "biscale",
+      "name": "biscale",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=biscale"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "eurostat",
       "name": "eurostat",
       "provider": {
@@ -158,7 +170,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "670.109KB",
+  "fileSize": "670.159KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
