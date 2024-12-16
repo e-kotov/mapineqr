@@ -23,11 +23,9 @@ mi_data(
 
 \item{level}{A \code{character} string specifying the NUTS level ("0", "1", "2", or "3").}
 
-\item{x_filters}{A \verb{named list} where the names are the filter fields for the x variable
-and the values are the selected values for those fields. Default is an empty list.}
+\item{x_filters}{A \verb{named list} where the names are the filter fields for the x variable and the values are the selected values for those fields. Default is an empty list. To find out which filters to use, use \code{\link{mi_source_filters}} with the desired \code{source_name}.}
 
-\item{y_filters}{(Optional) A \verb{named list} where the names are the filter fields for the y variable
-and the values are the selected values for those fields. Default is \code{NULL}.}
+\item{y_filters}{(Optional) A \verb{named list} where the names are the filter fields for the y variable and the values are the selected values for those fields. Default is \code{NULL}. To find out which filters to use, use \code{\link{mi_source_filters}} with the desired \code{source_name}.}
 
 \item{limit}{An \code{integer} specifying the maximum number of results to return. Default is 2000.}
 }
