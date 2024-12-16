@@ -27,12 +27,19 @@ preferred-citation:
   year: '2024'
   url: https://github.com/e-kotov/mapineqr
   doi: 10.32614/CRAN.package.mapineqr
-url: http://www.ekotov.pro/mapineqr/
+repository-code: https://github.com/e-kotov/mapineqr
+url: https://github.com/e-kotov/mapineqr/
 contact:
 - family-names: Kotov
   given-names: Egor
   email: kotov.egor@gmail.com
   orcid: https://orcid.org/0000-0001-6690-5345
+keywords:
+- data
+- demogrpahy
+- r
+- rstats
+- socio-economic-indicators
 references:
 - type: generic
   title: 'Mapineq Link: Geospatial Dashboard and Database'
@@ -200,4 +207,7 @@ references:
     email: werner.krause@uni-potsdam.de
     orcid: https://orcid.org/0000-0002-5069-7964
   year: '2024'
+identifiers:
+- type: url
+  value: http://www.ekotov.pro/mapineqr/
 

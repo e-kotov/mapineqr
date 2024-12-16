@@ -24,7 +24,7 @@ The goal of `{mapineqr}` is to access the data from the [Mapineq.org API](https:
 
 ## Installation
 
-You can install the development version of `{mapineqr}` from [GitHub](https://github.com/) with:
+You can install the development version of `{mapineqr}` from [GitHub](https://github.com/e-kotov/mapineqr) with:
 
 ``` r
 if (!require("pak")) install.packages("pak")

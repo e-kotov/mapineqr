@@ -6,7 +6,8 @@ Authors@R:
            comment = c(ORCID = "0000-0001-6690-5345"))
 Description: Access Mapineq inequality indicators via API.
 License: MIT + file LICENSE
-URL: http://www.ekotov.pro/mapineqr/
+URL: https://github.com/e-kotov/mapineqr/, http://www.ekotov.pro/mapineqr/
+BugReports: https://github.com/e-kotov/mapineqr/issues
 Imports: 
     checkmate,
     dplyr,

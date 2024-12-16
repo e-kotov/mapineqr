@@ -10,7 +10,7 @@
         "familyName": "Kotov",
         "givenName": "Egor"
       },
-      "codeRepository": "https://github.com/e-kotov/mapineqr",
+      "codeRepository": "https://github.com/e-kotov/mapineqr/",
       "description": "Access Mapineq inequality indicators via API.",
       "license": "https://spdx.org/licenses/MIT",
       "name": "mapineqr: Access Mapineq inequality indicators via API",

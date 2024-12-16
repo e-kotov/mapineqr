@@ -4,7 +4,9 @@
   "identifier": "mapineqr",
   "description": "Access Mapineq inequality indicators via API.",
   "name": "mapineqr: Access Mapineq inequality indicators via API",
-  "codeRepository": "https://github.com/e-kotov/mapineqr",
+  "relatedLink": "http://www.ekotov.pro/mapineqr/",
+  "codeRepository": "https://github.com/e-kotov/mapineqr/",
+  "issueTracker": "https://github.com/e-kotov/mapineqr/issues",
   "license": "https://spdx.org/licenses/MIT",
   "version": "0.0.0.9000",
   "programmingLanguage": {
@@ -156,7 +158,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "669.608KB",
+  "fileSize": "670.109KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -197,7 +199,6 @@
       "sameAs": "https://doi.org/10.5281/zenodo.13864000"
     }
   ],
-  "relatedLink": "http://www.ekotov.pro/mapineqr/",
   "readme": "https://github.com/e-kotov/mapineqr/blob/main/README.md",
   "contIntegration": "https://github.com/e-kotov/mapineqr/actions/workflows/R-CMD-check.yaml",
   "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html#experimental",
