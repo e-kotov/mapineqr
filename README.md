@@ -24,8 +24,20 @@ API](https://www.mapineq.org/data-users/) and
 
 ## Installation
 
-You can install the development version of `{mapineqr}` from
-[GitHub](https://github.com/) with:
+<!-- Install from CRAN:
+&#10;```r
+install.packages('mapineqr')
+``` -->
+
+Install latest release from **R-multiverse**:
+
+``` r
+install.packages('mapineqr',
+ repos = c('https://e-kotov.r-universe.dev', 'https://cloud.r-project.org')
+)
+```
+
+You can also install the development version of `mapineqr` from GitHub:
 
 ``` r
 if (!require("pak")) install.packages("pak")
