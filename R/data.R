@@ -10,7 +10,7 @@
 #'   and the values are the selected values for those fields. Default is an empty list.
 #' @param y_filters (Optional) A `named list` where the names are the filter fields for the y variable
 #'   and the values are the selected values for those fields. Default is `NULL`.
-#' @param limit An `integer` specifying the maximum number of results to return. Default is 1500.
+#' @param limit An `integer` specifying the maximum number of results to return. Default is 2000.
 #'
 #' @return A `tibble` with the following columns:
 #' 
@@ -58,7 +58,7 @@ mi_data <- function(
   level,
   x_filters = list(),
   y_filters = NULL,
-  limit = 1500
+  limit = 2000
 ) {
   # Validate inputs
   checkmate::assert_string(x_source)

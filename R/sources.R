@@ -2,7 +2,7 @@
 #' 
 #' @param level a `character` string specifying the NUTS level ("0", "1", "2", or "3"). You can also always check valid NUTS levels using \code{\link{mi_nuts_levels}}.
 #' @param year an `integer` of length 1, specifying the year. Optional.
-#' @param limit an `integer` of length 1 specifying the maximum number of sources to return. Defaults to 1000.
+#' @inheritParams mi_data
 #' 
 #' @return a `tibble` of sources with the following columns:
 #' 
@@ -84,7 +84,7 @@ mi_sources <- function(
 #' Get the NUTS level and Year coverage for a specific data source.
 #' 
 #' @param source_name name of the data source
-#' 
+#' @inheritParams mi_data
 #' @return a `tibble` containing the following columns:
 #' 
 #' * `nuts_level`: NUTS level
@@ -103,7 +103,8 @@ mi_sources <- function(
 #' mi_source_coverage("ghs_smod")
 #' }
 mi_source_coverage <- function(
-  source_name
+  source_name,
+  limit = 1500
 ){
   checkmate::assert_string(source_name)
 
@@ -133,7 +134,8 @@ mi_source_coverage <- function(
       "User-Agent" = getOption("mapineqr.user_agent")
     ) |>
     httr2::req_url_query(
-      `_resource` = source_name
+      `_resource` = source_name,
+      `limit` = limit
     ) |>
     httr2::req_method("GET") |>
     httr2::req_perform()

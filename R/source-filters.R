@@ -15,14 +15,14 @@
 #'
 #' @examples
 #' \dontrun{
-#' mi_column_values(
+#' mi_source_filters(
 #'   source_name = "DEMO_R_FIND2",
 #'   year = 2020,
 #'   level = "2",
 #'   filters = list(unit = "YR")
 #' )
 #' }
-mi_column_values <- function(
+mi_source_filters <- function(
   source_name,
   year,
   level,

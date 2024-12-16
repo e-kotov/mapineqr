@@ -11,7 +11,7 @@ mi_sources(level, year = NULL, limit = 1000)
 
 \item{year}{an \code{integer} of length 1, specifying the year. Optional.}
 
-\item{limit}{an \code{integer} of length 1 specifying the maximum number of sources to return. Defaults to 1000.}
+\item{limit}{An \code{integer} specifying the maximum number of results to return. Default is 2000.}
 }
 \value{
 a \code{tibble} of sources with the following columns:
