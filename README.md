@@ -267,7 +267,7 @@ edu_v_life_exp_plot <- ggplot(xy_data, aes(x = x, y = y)) +
 # ggsave("man/figures/edu_v_life_exp_plot.png", edu_v_life_exp_plot, width = 8, height = 6, units = "in", dpi = 300)
 ```
 
-![Education vs Life Expectancy](figures/edu_v_life_exp_plot.png)
+![Education vs Life Expectancy](man/figures/edu_v_life_exp_plot.png)
 
 4.  Add the bivariate data to the NUTS2 polygons and create a plot:
 
