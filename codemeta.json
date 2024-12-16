@@ -4,6 +4,7 @@
   "identifier": "mapineqr",
   "description": "Access Mapineq inequality indicators via API.",
   "name": "mapineqr: Access Mapineq inequality indicators via API",
+  "codeRepository": "https://github.com/e-kotov/mapineqr",
   "license": "https://spdx.org/licenses/MIT",
   "version": "0.0.0.9000",
   "programmingLanguage": {
@@ -33,16 +34,27 @@
   "softwareSuggestions": [
     {
       "@type": "SoftwareApplication",
-      "identifier": "testthat",
-      "name": "testthat",
-      "version": ">= 3.0.0",
+      "identifier": "eurostat",
+      "name": "eurostat",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=testthat"
+      "sameAs": "https://CRAN.R-project.org/package=eurostat"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "nuts",
+      "name": "nuts",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=nuts"
     }
   ],
   "softwareRequirements": {
@@ -84,6 +96,18 @@
     },
     "4": {
       "@type": "SoftwareApplication",
+      "identifier": "jsonlite",
+      "name": "jsonlite",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=jsonlite"
+    },
+    "5": {
+      "@type": "SoftwareApplication",
       "identifier": "purrr",
       "name": "purrr",
       "provider": {
@@ -94,7 +118,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=purrr"
     },
-    "5": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
@@ -106,7 +130,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rlang"
     },
-    "6": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -118,9 +142,21 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
+    "8": {
+      "@type": "SoftwareApplication",
+      "identifier": "tidyr",
+      "name": "tidyr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tidyr"
+    },
     "SystemRequirements": null
   },
-  "fileSize": "11.224KB",
+  "fileSize": "669.608KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -161,7 +197,9 @@
       "sameAs": "https://doi.org/10.5281/zenodo.13864000"
     }
   ],
-  "codeRepository": "https://github.com/e-kotov/mapineqr",
+  "relatedLink": "http://www.ekotov.pro/mapineqr/",
   "readme": "https://github.com/e-kotov/mapineqr/blob/main/README.md",
-  "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html#experimental"
+  "contIntegration": "https://github.com/e-kotov/mapineqr/actions/workflows/R-CMD-check.yaml",
+  "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html#experimental",
+  "keywords": ["data", "r", "rstats", "socio-economic-indicators", "demogrpahy"]
 }

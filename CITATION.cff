@@ -27,6 +27,7 @@ preferred-citation:
   year: '2024'
   url: https://github.com/e-kotov/mapineqr
   doi: 10.32614/CRAN.package.mapineqr
+url: http://www.ekotov.pro/mapineqr/
 contact:
 - family-names: Kotov
   given-names: Egor
@@ -94,6 +95,18 @@ references:
     email: hadley@posit.co
   year: '2024'
 - type: software
+  title: jsonlite
+  abstract: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
+  notes: Imports
+  url: https://jeroen.r-universe.dev/jsonlite
+  repository: https://CRAN.R-project.org/package=jsonlite
+  authors:
+  - family-names: Ooms
+    given-names: Jeroen
+    email: jeroenooms@gmail.com
+    orcid: https://orcid.org/0000-0002-4035-0289
+  year: '2024'
+- type: software
   title: purrr
   abstract: 'purrr: Functional Programming Tools'
   notes: Imports
@@ -138,15 +151,53 @@ references:
     email: hadley@rstudio.com
   year: '2024'
 - type: software
-  title: testthat
-  abstract: 'testthat: Unit Testing for R'
-  notes: Suggests
-  url: https://testthat.r-lib.org
-  repository: https://CRAN.R-project.org/package=testthat
+  title: tidyr
+  abstract: 'tidyr: Tidy Messy Data'
+  notes: Imports
+  url: https://tidyr.tidyverse.org
+  repository: https://CRAN.R-project.org/package=tidyr
   authors:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@posit.co
+  - family-names: Vaughan
+    given-names: Davis
+    email: davis@posit.co
+  - family-names: Girlich
+    given-names: Maximilian
   year: '2024'
-  version: '>= 3.0.0'
+- type: software
+  title: eurostat
+  abstract: 'eurostat: Tools for Eurostat Open Data'
+  notes: Suggests
+  url: https://ropengov.github.io/eurostat/
+  repository: https://CRAN.R-project.org/package=eurostat
+  authors:
+  - family-names: Lahti
+    given-names: Leo
+    email: leo.lahti@iki.fi
+    orcid: https://orcid.org/0000-0001-5537-637X
+  - family-names: Huovari
+    given-names: Janne
+  - family-names: Kainu
+    given-names: Markus
+  - family-names: Biecek
+    given-names: Przemyslaw
+  year: '2024'
+- type: software
+  title: nuts
+  abstract: 'nuts: Convert European Regional Data'
+  notes: Suggests
+  url: https://docs.ropensci.org/nuts/
+  repository: https://CRAN.R-project.org/package=nuts
+  authors:
+  - family-names: Hennicke
+    given-names: Moritz
+    email: AAoritz@posteo.de
+    orcid: https://orcid.org/0000-0001-6811-1821
+  - family-names: Krause
+    given-names: Werner
+    email: werner.krause@uni-potsdam.de
+    orcid: https://orcid.org/0000-0002-5069-7964
+  year: '2024'
 
