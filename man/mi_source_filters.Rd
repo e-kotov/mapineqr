@@ -25,7 +25,7 @@ A \code{tibble} with the fields, labels, and their possible values for filtering
 Fetches the possible filtering values for a given source, year, and NUTS level.
 }
 \examples{
-\dontrun{
+\donttest{
 mi_source_filters(
   source_name = "DEMO_R_FIND2",
   year = 2020,

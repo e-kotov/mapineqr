@@ -13,8 +13,6 @@ a \code{character} vector of valid NUTS levels that will be accepted by other fu
 Get a list of available NUTS levels
 }
 \examples{
-\dontrun{
 mi_nuts_levels()
-}
 
 }

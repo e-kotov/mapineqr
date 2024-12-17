@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' mi_source_filters(
 #'   source_name = "DEMO_R_FIND2",
 #'   year = 2020,

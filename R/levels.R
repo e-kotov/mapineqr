@@ -5,9 +5,7 @@
 #' @export
 #' 
 #' @examples
-#' \dontrun{
 #' mi_nuts_levels()
-#' }
 #' 
 mi_nuts_levels <- function(){
   base_api_endpoint <- getOption("mapineqr.base_api_endpoint")

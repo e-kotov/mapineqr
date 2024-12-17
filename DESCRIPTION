@@ -1,5 +1,5 @@
 Package: mapineqr
-Title: Access Mapineq inequality indicators via API
+Title: Access Mapineq Inequality Indicators via API
 Version: 0.0.0.9000
 Authors@R: 
     person("Egor", "Kotov", , "kotov.egor@gmail.com", role = c("aut", "cre"),

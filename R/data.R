@@ -30,7 +30,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Univariate example
 #' mi_data(
 #'   x_source = "TGS00010",

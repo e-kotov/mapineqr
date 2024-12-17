@@ -53,7 +53,7 @@ A \code{tibble} with the following columns:
 Fetches univariate or bivariate data for a given source, year, NUTS level, and selected filters.
 }
 \examples{
-\dontrun{
+\donttest{
 # Univariate example
 mi_data(
   x_source = "TGS00010",

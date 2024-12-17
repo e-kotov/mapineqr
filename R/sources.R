@@ -15,7 +15,7 @@
 #' 
 #' @examples
 #' 
-#' \dontrun{
+#' \donttest{
 #' # get up to 10 sources for NUTS level 3
 #' mi_sources("3", limit = 10)
 #' 
@@ -97,7 +97,7 @@ mi_sources <- function(
 #' @export
 #' 
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' mi_source_coverage("BD_HGNACE2_R3")
 #' 
 #' mi_source_coverage("ghs_smod")

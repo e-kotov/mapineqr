@@ -26,7 +26,7 @@ Get a list of available data sources
 }
 \examples{
 
-\dontrun{
+\donttest{
 # get up to 10 sources for NUTS level 3
 mi_sources("3", limit = 10)
 

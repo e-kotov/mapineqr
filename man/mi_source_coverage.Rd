@@ -25,7 +25,7 @@ a \code{tibble} containing the following columns:
 Get the NUTS level and Year coverage for a specific data source.
 }
 \examples{
-\dontrun{
+\donttest{
 mi_source_coverage("BD_HGNACE2_R3")
 
 mi_source_coverage("ghs_smod")
