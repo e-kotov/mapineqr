@@ -76,14 +76,48 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="co"># get up to 10 sources for NUTS level 3</span></span></span>
 <span class="r-in"><span><span class="fu">mi_sources</span><span class="op">(</span><span class="st">"3"</span>, limit <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    source_name    short_description      description                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> DEMO_R_D3AREA  <span style="color: #949494;">"</span>Area of regions<span style="color: #949494;">"</span>      Area by NUTS 3 region (ESTAT)          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> PROJ_19RAASFR3 <span style="color: #949494;">"</span>Fertility assumption<span style="color: #949494;">"</span> Assumptions for fertility rates by age…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> PROJ_19RAASMR3 <span style="color: #949494;">"</span>Death assumptions<span style="color: #949494;">"</span>    Assumptions for probability of dying b…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> BD_HGNACE2_R3  <span style="color: #949494;">"</span>Business demography <span style="color: #949494;">"</span> Business demography and high growth en…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> BD_SIZE_R3     <span style="color: #949494;">"</span>Business demography <span style="color: #949494;">"</span> Business demography by size class and …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> CENS_11DWOB_R3 <span style="color: #949494;">"</span>Dwellings by groups<span style="color: #949494;">"</span>  Conventional dwellings by occupancy st…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> CRIM_GEN_REG   <span style="color: #949494;">"</span>Crimes by region<span style="color: #949494;">"</span>     Crimes recorded by the police by NUTS …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> DEMO_R_MAGEC3  <span style="color: #949494;">"</span>Deaths by goups<span style="color: #949494;">"</span>      Deaths by age group, sex and NUTS 3 re…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> DEMO_R_DEATHS  <span style="color: #949494;">"</span>Deaths by region<span style="color: #949494;">"</span>     Deaths (total) by NUTS 3 region (ESTAT)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> CENS_01RDHH    <span style="color: #949494;">"</span>Dwellings by type<span style="color: #949494;">"</span>    Dwellings by type of housing, building…</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># get all sources for NUTS level 3 and year 2020</span></span></span>
 <span class="r-in"><span><span class="fu">mi_sources</span><span class="op">(</span><span class="st">"3"</span>, year <span class="op">=</span> <span class="fl">2020</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 18 × 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    source_name    short_description      description                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> PROJ_19RAASFR3 <span style="color: #949494;">"</span>Fertility assumption<span style="color: #949494;">"</span> Assumptions for fertility rates by age…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> PROJ_19RAASMR3 <span style="color: #949494;">"</span>Death assumptions<span style="color: #949494;">"</span>    Assumptions for probability of dying b…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> BD_HGNACE2_R3  <span style="color: #949494;">"</span>Business demography <span style="color: #949494;">"</span> Business demography and high growth en…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> BD_SIZE_R3     <span style="color: #949494;">"</span>Business demography <span style="color: #949494;">"</span> Business demography by size class and …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> DEMO_R_MAGEC3  <span style="color: #949494;">"</span>Deaths by goups<span style="color: #949494;">"</span>      Deaths by age group, sex and NUTS 3 re…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> DEMO_R_DEATHS  <span style="color: #949494;">"</span>Deaths by region<span style="color: #949494;">"</span>     Deaths (total) by NUTS 3 region (ESTAT)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> BD_ENACE2_R3   <span style="color: #949494;">"</span>Employer demography<span style="color: #949494;">"</span>  Employer business demography by NACE R…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> DEMO_R_FIND3   <span style="color: #949494;">"</span>Fertility indicators<span style="color: #949494;">"</span> Fertility indicators by NUTS 3 region …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ookla          <span style="color: #949494;">"</span>Ookla internet speed<span style="color: #949494;">"</span> Fixed broadband and mobile (cellular) …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> DEMO_R_FAGEC3  <span style="color: #949494;">"</span>Live births by group<span style="color: #949494;">"</span> Live births by age group of the mother…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> DEMO_R_BIRTHS  <span style="color: #949494;">"</span>Live births, regions<span style="color: #949494;">"</span> Live births (total) by NUTS 3 region (…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> pm25           <span style="color: #949494;">"</span>Air particulates<span style="color: #949494;">"</span>     PM2.5 Satellite-derived particulate ma…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> DEMO_R_GIND3   <span style="color: #949494;">"</span>Population change<span style="color: #949494;">"</span>    Population change - Demographic balanc…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> DEMO_R_D3DENS  <span style="color: #949494;">"</span>Population density<span style="color: #949494;">"</span>   Population density by NUTS 3 region (E…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> PROJ_19RALEXP3 <span style="color: #949494;">"</span>Life expectancy<span style="color: #949494;">"</span>      Projected life expectancy by age (reac…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> REGION_SOCIAL  <span style="color: #949494;">"</span>Indicators Soc &amp; Env<span style="color: #949494;">"</span> Regional Social and Environmental indi…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> ghs_smod       <span style="color: #949494;">"</span>Settlement type<span style="color: #949494;">"</span>      Satellite-based settlement types based…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> REGION_ST      <span style="color: #949494;">"</span>Short-term stats<span style="color: #949494;">"</span>     Short-term regional statistics (OECD)  </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

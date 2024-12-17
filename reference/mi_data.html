@@ -106,7 +106,7 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="co"># Univariate example</span></span></span>
 <span class="r-in"><span><span class="fu">mi_data</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  x_source <span class="op">=</span> <span class="st">"TGS00010"</span>,</span></span>
@@ -114,6 +114,20 @@
 <span class="r-in"><span>  level <span class="op">=</span> <span class="st">"2"</span>,</span></span>
 <span class="r-in"><span>  x_filters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>isced11 <span class="op">=</span> <span class="st">"TOTAL"</span>, unit <span class="op">=</span> <span class="st">"PC"</span>, age <span class="op">=</span> <span class="st">"Y_GE15"</span>, freq <span class="op">=</span> <span class="st">"A"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 910 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    best_year geo   geo_name             x</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2021      AL01  Veri              <span style="color: #BB0000;">NA</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2021      AL02  Qender            <span style="color: #BB0000;">NA</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2021      AL03  Jug               <span style="color: #BB0000;">NA</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2021      AT11  Burgenland         4.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2021      AT11  Burgenland        <span style="color: #BB0000;">NA</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2021      AT11  Burgenland         4.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2021      AT12  Niederösterreich   4.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2021      AT12  Niederösterreich   4  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2021      AT12  Niederösterreich   4.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2021      AT13  Wien              10.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 900 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Bivariate example</span></span></span>
 <span class="r-in"><span><span class="fu">mi_data</span><span class="op">(</span></span></span>
@@ -124,7 +138,21 @@
 <span class="r-in"><span>  x_filters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>isced11 <span class="op">=</span> <span class="st">"TOTAL"</span>, unit <span class="op">=</span> <span class="st">"PC"</span>, age <span class="op">=</span> <span class="st">"Y_GE15"</span>, freq <span class="op">=</span> <span class="st">"A"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  y_filters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>unit <span class="op">=</span> <span class="st">"YR"</span>, age <span class="op">=</span> <span class="st">"Y_LT1"</span>, freq <span class="op">=</span> <span class="st">"A"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2,000 × 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    best_year geo   geo_name       x     y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2018      AL01  Veri        <span style="color: #BB0000;">NA</span>    75.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2018      AL01  Veri        <span style="color: #BB0000;">NA</span>    77.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2018      AL01  Veri        <span style="color: #BB0000;">NA</span>    79.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2018      AL02  Qender      <span style="color: #BB0000;">NA</span>    78.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2018      AL02  Qender      <span style="color: #BB0000;">NA</span>    81.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2018      AL02  Qender      <span style="color: #BB0000;">NA</span>    76.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2018      AL03  Jug         <span style="color: #BB0000;">NA</span>    76.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2018      AL03  Jug         <span style="color: #BB0000;">NA</span>    78.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2018      AL03  Jug         <span style="color: #BB0000;">NA</span>    74.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2018      AT11  Burgenland   4.2  79.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1,990 more rows</span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -73,11 +73,39 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="fu">mi_source_coverage</span><span class="op">(</span><span class="st">"BD_HGNACE2_R3"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 52 × 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    nuts_level year  source_name   short_description      description            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 0          2008  BD_HGNACE2_R3 <span style="color: #949494;">"</span>Business demography <span style="color: #949494;">"</span> Business demography an…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 0          2009  BD_HGNACE2_R3 <span style="color: #949494;">"</span>Business demography <span style="color: #949494;">"</span> Business demography an…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 0          2010  BD_HGNACE2_R3 <span style="color: #949494;">"</span>Business demography <span style="color: #949494;">"</span> Business demography an…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 0          2011  BD_HGNACE2_R3 <span style="color: #949494;">"</span>Business demography <span style="color: #949494;">"</span> Business demography an…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 0          2012  BD_HGNACE2_R3 <span style="color: #949494;">"</span>Business demography <span style="color: #949494;">"</span> Business demography an…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 0          2013  BD_HGNACE2_R3 <span style="color: #949494;">"</span>Business demography <span style="color: #949494;">"</span> Business demography an…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 0          2014  BD_HGNACE2_R3 <span style="color: #949494;">"</span>Business demography <span style="color: #949494;">"</span> Business demography an…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 0          2015  BD_HGNACE2_R3 <span style="color: #949494;">"</span>Business demography <span style="color: #949494;">"</span> Business demography an…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 0          2016  BD_HGNACE2_R3 <span style="color: #949494;">"</span>Business demography <span style="color: #949494;">"</span> Business demography an…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 0          2017  BD_HGNACE2_R3 <span style="color: #949494;">"</span>Business demography <span style="color: #949494;">"</span> Business demography an…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 42 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">mi_source_coverage</span><span class="op">(</span><span class="st">"ghs_smod"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 48 × 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    nuts_level year  source_name short_description description                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 0          1975  ghs_smod    Settlement type   Satellite-based settlement ty…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 0          1980  ghs_smod    Settlement type   Satellite-based settlement ty…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 0          1985  ghs_smod    Settlement type   Satellite-based settlement ty…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 0          1990  ghs_smod    Settlement type   Satellite-based settlement ty…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 0          1995  ghs_smod    Settlement type   Satellite-based settlement ty…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 0          2000  ghs_smod    Settlement type   Satellite-based settlement ty…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 0          2005  ghs_smod    Settlement type   Satellite-based settlement ty…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 0          2010  ghs_smod    Settlement type   Satellite-based settlement ty…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 0          2015  ghs_smod    Settlement type   Satellite-based settlement ty…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 0          2020  ghs_smod    Settlement type   Satellite-based settlement ty…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 38 more rows</span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
