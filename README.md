@@ -15,7 +15,7 @@ status](https://www.r-pkg.org/badges/version/mapineqr.png)](https://CRAN.R-proje
 The goal of `{mapineqr}` is to access the data from the [Mapineq.org
 API](https://www.mapineq.org/data-users/) and
 [dashboard](https://dashboard.mapineq.org/datacatalogue) (product of the
-[Mapineq](https://mapineq.eu/) proejct).
+[Mapineq](https://mapineq.eu/) project).
 
 For Python package/module, see <https://github.com/e-kotov/mapineqpy>.
 
