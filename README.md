@@ -1,7 +1,7 @@
 # mapineqr
 
 
-# mapineqr
+<!-- README.md is generated from README.qmd. Please edit that file -->
 
 <!-- badges: start -->
 

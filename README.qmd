@@ -7,7 +7,7 @@ execute:
 eval: false
 ---
 
-# mapineqr
+<!-- README.md is generated from README.qmd. Please edit that file -->
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
