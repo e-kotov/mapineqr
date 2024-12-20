@@ -1,11 +1,6 @@
 # mapineqr
 
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-An R package to access the data from the <https://www.mapineq.org/> API
-and dashboard (product of the [Mapineq](https://mapineq.eu/) proejct)
-
 # mapineqr
 
 <!-- badges: start -->
@@ -21,6 +16,8 @@ The goal of `{mapineqr}` is to access the data from the [Mapineq.org
 API](https://www.mapineq.org/data-users/) and
 [dashboard](https://dashboard.mapineq.org/datacatalogue) (product of the
 [Mapineq](https://mapineq.eu/) proejct).
+
+For Python package/module, see <https://github.com/e-kotov/mapineqpy>.
 
 ## Installation
 
