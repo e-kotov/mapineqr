@@ -8,7 +8,7 @@
 #' @param level A `character` string specifying the NUTS level ("0", "1", "2", or "3").
 #' @param x_filters A `named list` where the names are the filter fields for the x variable and the values are the selected values for those fields. Default is an empty list. To find out which filters to use, use \code{\link{mi_source_filters}} with the desired `source_name`.
 #' @param y_filters (Optional) A `named list` where the names are the filter fields for the y variable and the values are the selected values for those fields. Default is `NULL`. To find out which filters to use, use \code{\link{mi_source_filters}} with the desired `source_name`.
-#' @param limit An `integer` specifying the maximum number of results to return. Default is 2000.
+#' @param limit An `integer` specifying the maximum number of results to return. Default is 2500.
 #'
 #' @return A `tibble` with the following columns:
 #' 
@@ -56,7 +56,7 @@ mi_data <- function(
   level,
   x_filters = list(),
   y_filters = NULL,
-  limit = 2000
+  limit = 2500
 ) {
   # Validate inputs
   checkmate::assert_string(x_source)

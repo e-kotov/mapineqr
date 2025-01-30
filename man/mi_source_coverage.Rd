@@ -4,12 +4,12 @@
 \alias{mi_source_coverage}
 \title{Get NUTS level and Year coverage for a specific source}
 \usage{
-mi_source_coverage(source_name, limit = 1500)
+mi_source_coverage(source_name, limit = 2500)
 }
 \arguments{
 \item{source_name}{name of the data source}
 
-\item{limit}{An \code{integer} specifying the maximum number of results to return. Default is 2000.}
+\item{limit}{An \code{integer} specifying the maximum number of results to return. Default is 2500.}
 }
 \value{
 a \code{tibble} containing the following columns:

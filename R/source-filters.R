@@ -27,7 +27,7 @@ mi_source_filters <- function(
   year,
   level,
   filters = list(),
-  limit = 40
+  limit = 2500
 ) {
   # Validate inputs
   checkmate::assert_string(source_name)

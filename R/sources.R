@@ -27,7 +27,7 @@
 mi_sources <- function(
   level,
   year = NULL,
-  limit = 1000
+  limit = 2500
 ){
 
   checkmate::assert_choice(level, c("0", "1", "2", "3"))
@@ -104,7 +104,7 @@ mi_sources <- function(
 #' }
 mi_source_coverage <- function(
   source_name,
-  limit = 1500
+  limit = 2500
 ){
   checkmate::assert_string(source_name)
 
