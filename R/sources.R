@@ -64,7 +64,13 @@ mi_sources <- function(
     httr2::req_perform()
 
   response_data <- httr2::resp_body_json(response, simplifyVector = TRUE) |> 
-    tibble::as_tibble() |> 
+    tibble::as_tibble()
+
+  if(nrow(response_data) == 0){
+    stop(paste0("No sources found for year ", year, ". Please specify a different year."))
+  }
+  
+  response_data <- response_data |> 
     dplyr::rename(
       description = .data$f_description,
       source_name = .data$f_resource,
@@ -75,6 +81,8 @@ mi_sources <- function(
       .data$short_description,
       .data$description
     )
+  
+  
   
   return(response_data)
 }
