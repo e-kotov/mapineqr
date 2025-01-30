@@ -4,14 +4,14 @@
 \alias{mi_sources}
 \title{Get a list of available data sources}
 \usage{
-mi_sources(level, year = NULL, limit = 1000)
+mi_sources(level, year = NULL, limit = 2500)
 }
 \arguments{
 \item{level}{a \code{character} string specifying the NUTS level ("0", "1", "2", or "3"). You can also always check valid NUTS levels using \code{\link{mi_nuts_levels}}.}
 
 \item{year}{an \code{integer} of length 1, specifying the year. Optional.}
 
-\item{limit}{An \code{integer} specifying the maximum number of results to return. Default is 2000.}
+\item{limit}{An \code{integer} specifying the maximum number of results to return. Default is 2500.}
 }
 \value{
 a \code{tibble} of sources with the following columns:

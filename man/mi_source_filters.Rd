@@ -4,7 +4,7 @@
 \alias{mi_source_filters}
 \title{Get column values for filtering a source}
 \usage{
-mi_source_filters(source_name, year, level, filters = list(), limit = 40)
+mi_source_filters(source_name, year, level, filters = list(), limit = 2500)
 }
 \arguments{
 \item{source_name}{A \code{character} string specifying the source name (f_resource).}
@@ -16,7 +16,7 @@ mi_source_filters(source_name, year, level, filters = list(), limit = 40)
 \item{filters}{A \verb{named list} where the names are the filter fields and
 the values are the selected values for those fields. Default is an empty list.}
 
-\item{limit}{An \code{integer} specifying the maximum number of results to return. Default is 2000.}
+\item{limit}{An \code{integer} specifying the maximum number of results to return. Default is 2500.}
 }
 \value{
 A \code{tibble} with the fields, labels, and their possible values for filtering.

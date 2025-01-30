@@ -11,7 +11,7 @@ mi_data(
   level,
   x_filters = list(),
   y_filters = NULL,
-  limit = 2000
+  limit = 2500
 )
 }
 \arguments{
@@ -27,7 +27,7 @@ mi_data(
 
 \item{y_filters}{(Optional) A \verb{named list} where the names are the filter fields for the y variable and the values are the selected values for those fields. Default is \code{NULL}. To find out which filters to use, use \code{\link{mi_source_filters}} with the desired \code{source_name}.}
 
-\item{limit}{An \code{integer} specifying the maximum number of results to return. Default is 2000.}
+\item{limit}{An \code{integer} specifying the maximum number of results to return. Default is 2500.}
 }
 \value{
 A \code{tibble} with the following columns:
