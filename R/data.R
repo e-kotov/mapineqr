@@ -17,6 +17,9 @@
 #' * `geo_name`: name of the (NUTS) region at the requested level.
 #' * `geo_source`: source (type) of the spatial units at the requested level.
 #' * `geo_year`: year of the (NUTS) region at the requested level.
+#' * `data_year` (int): The year of the data point (if only `x_source` is provided).
+#' * `predictor_year` (int, optional): The year of the predictor variable (X), included in bivariate requests (only included when `y_source` is provided).
+#' * `outcome_year` (int, optional): The year of the outcome variable (Y), included in bivariate requests (only included when `y_source` is provided).
 #' * `x`: the value of the univariate variable.
 #' * `y`: the value of the y variable (for bivariate data when `y_source` is provided).
 #' 
