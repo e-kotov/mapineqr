@@ -31,22 +31,15 @@ mi_data(
 }
 \value{
 A \code{tibble} with the following columns:
-
-\strong{For univariate data} (when \code{y_source} is not provided):
 \itemize{
-\item \code{best_year}: the best available year, closest to the requested year.
-\item \code{geo}: code for the NUTS region at the requested level.
-\item \code{geo_name}: name of the NUTS region at the requested level.
+\item \code{geo}: code for the (NUTS) region at the requested level.
+\item \code{geo_name}: name of the (NUTS) region at the requested level.
+\item \code{geo_source}: source (type) of the spatial units at the requested level.
+\item \code{geo_year}: year of the (NUTS) region at the requested level.
+\item \code{x_year}: The year of the predictor variable (X), included in bivariate requests.
+\item \code{y_year} (optional): The year of the outcome variable (Y), included in bivariate requests (only included when \code{y_source} is provided).
 \item \code{x}: the value of the univariate variable.
-}
-
-\strong{For bivariate data} (when \code{y_source} is provided):
-\itemize{
-\item \code{best_year}: the best available year, closest to the requested year (same for both x and y variables).
-\item \code{geo}: code for the NUTS region at the requested level.
-\item \code{geo_name}: name of the NUTS region at the requested level.
-\item \code{x}: the value of the x variable.
-\item \code{y}: the value of the y variable.
+\item \code{y} (optional): the value of the y variable (only included when \code{y_source} is provided).
 }
 }
 \description{
