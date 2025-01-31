@@ -12,16 +12,14 @@
 #'
 #' @return A `tibble` with the following columns:
 #' 
-#' * `data_year`: the year of the data point.
 #' * `geo`: code for the (NUTS) region at the requested level.
 #' * `geo_name`: name of the (NUTS) region at the requested level.
 #' * `geo_source`: source (type) of the spatial units at the requested level.
 #' * `geo_year`: year of the (NUTS) region at the requested level.
-#' * `data_year` (int): The year of the data point (if only `x_source` is provided).
-#' * `predictor_year` (int, optional): The year of the predictor variable (X), included in bivariate requests (only included when `y_source` is provided).
-#' * `outcome_year` (int, optional): The year of the outcome variable (Y), included in bivariate requests (only included when `y_source` is provided).
+#' * `x_year`: The year of the predictor variable (X), included in bivariate requests.
+#' * `y_year` (optional): The year of the outcome variable (Y), included in bivariate requests (only included when `y_source` is provided).
 #' * `x`: the value of the univariate variable.
-#' * `y`: the value of the y variable (for bivariate data when `y_source` is provided).
+#' * `y` (optional): the value of the y variable (only included when `y_source` is provided).
 #' 
 #' @export
 #'
@@ -125,6 +123,31 @@ mi_data <- function(
   # Parse response
   response_data <- httr2::resp_body_json(response, simplifyVector = TRUE) |> 
     tibble::as_tibble()
+  
+  # Define expected columns based on whether y_source is specified
+  if (is.null(y_source)) {
+    expected_columns <- c("geo", "geo_name", "geo_source", "geo_year", "data_year", "x")
+  } else {
+    expected_columns <- c("geo", "geo_name", "geo_source", "geo_year", 
+                          "predictor_year", "outcome_year", "x", "y")
+  }
+
+  # Check for missing expected columns
+  missing_columns <- setdiff(expected_columns, colnames(response_data))
+
+  if (length(missing_columns) > 0) {
+    stop("The following expected columns are missing from the response: ", paste(missing_columns, collapse = ", "), ". The API may be down or might have changed. Please try again later. If the error persists, please open an issue on GitHub at <https://github.com/e-kotov/mapineqr/issues>.")
+  }
+
+  # Select and reorder columns using dplyr
+  response_data <- response_data |> 
+    dplyr::select(dplyr::all_of(expected_columns)) |> 
+    dplyr::rename_with(~ dplyr::case_when(
+      .x == "predictor_year" ~ "x_year",
+      .x == "data_year" & !"predictor_year" %in% colnames(response_data) ~ "x_year",
+      .x == "outcome_year" ~ "y_year",
+      TRUE ~ .x
+    ), .cols = dplyr::any_of(c("predictor_year", "outcome_year", "data_year")))
   
   return(response_data)
 }
