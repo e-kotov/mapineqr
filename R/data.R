@@ -70,7 +70,10 @@ mi_data <- function(
     source = x_source,
     conditions = x_conditions
   )
-  x_json_string <- jsonlite::toJSON(x_json, auto_unbox = TRUE)
+  # Minify JSON to remove extra whitespace/newlines
+  x_json_string <- jsonlite::minify(
+    jsonlite::toJSON(x_json, auto_unbox = TRUE)
+  )
 
   # Check if it's bivariate (Y filters are provided)
   if (!is.null(y_source) && !is.null(y_filters)) {
@@ -81,7 +84,9 @@ mi_data <- function(
       source = y_source,
       conditions = y_conditions
     )
-    y_json_string <- jsonlite::toJSON(y_json, auto_unbox = TRUE)
+    y_json_string <- jsonlite::minify(
+      jsonlite::toJSON(y_json, auto_unbox = TRUE)
+    )
   }
   
   # Build API endpoint
@@ -105,25 +110,61 @@ mi_data <- function(
     query_params$`_outcome_year` <- as.character(year)
   }
 
-  # Add JSON parameters as proper strings without URL encoding issues
-  query_params$`X_JSON` <- I(x_json_string)
+  # Add JSON parameters as proper strings so that httr2 can URL encode them automatically
+  query_params$`X_JSON` <- x_json_string
   if (!is.null(y_source) && !is.null(y_filters)) {
-    query_params$`Y_JSON` <- I(y_json_string)
+    query_params$`Y_JSON` <- y_json_string
   }
   
   # Perform API request
-  response <- httr2::request(url_endpoint) |>
+  request <- httr2::request(url_endpoint) |>
     httr2::req_headers(
       "Content-Type" = "application/json",
       "User-Agent" = getOption("mapineqr.user_agent")
     ) |>
     httr2::req_url_query(!!!query_params) |>
-    httr2::req_method("GET") |>
-    httr2::req_perform()
+    httr2::req_method("GET")
+
+  response <- request |> httr2::req_perform()
   
   # Parse response
   response_data <- httr2::resp_body_json(response, simplifyVector = TRUE) |> 
     tibble::as_tibble()
+  
+  # Check for duplicate values within each geo for x and (if applicable) y.
+  duplicate_issues <- response_data %>%
+    dplyr::group_by(geo) %>%
+    dplyr::summarise(
+      distinct_x = dplyr::n_distinct(x),
+      distinct_y = if ("y" %in% names(response_data)) dplyr::n_distinct(y) else NA_integer_,
+      .groups = "drop"
+    )
+  
+  # Determine if any geo has multiple distinct values
+  x_issue <- any(duplicate_issues$distinct_x > 1)
+  y_issue <- if ("y" %in% names(response_data)) any(duplicate_issues$distinct_y > 1) else FALSE
+  
+  if (x_issue || y_issue) {
+    msg <- "The API returned duplicate values for some geographic regions. This likely indicates that not all necessary filters were specified for the data source(s)."
+    if (x_issue) {
+      msg <- paste0(
+        msg,
+        "\n\nFor the 'x' variable: please check the 'x_filters' argument provided to mi_data() for the data source '", x_source, "'.",
+        "\nYou can review the available filters by running:\n",
+        "  mi_source_filters(source_name = '", x_source, "', year = ", year, ", level = '", level, "')\n"
+      )
+    }
+    if (y_issue) {
+      msg <- paste0(
+        msg,
+        "\n\nFor the 'y' variable: please check the 'y_filters' argument provided to mi_data() for the data source '", y_source, "'.",
+        "\nYou can review the available filters by running:\n",
+        "  mi_source_filters(source_name = '", y_source, "', year = ", year, ", level = '", level, "')\n"
+      )
+    }
+    stop(msg)
+  }
+
   
   # Define expected columns based on whether y_source is specified
   if (is.null(y_source)) {
