@@ -31,7 +31,7 @@
 #'   x_source = "TGS00010",
 #'   year = 2020,
 #'   level = "2",
-#'   x_filters = list(isced11 = "TOTAL", unit = "PC", age = "Y_GE15", freq = "A")
+#'   x_filters = list(isced11 = "TOTAL", sex = "F")
 #' )
 #'
 #' # Bivariate example
@@ -40,8 +40,8 @@
 #'   y_source = "DEMO_R_MLIFEXP",
 #'   year = 2020,
 #'   level = "2",
-#'   x_filters = list(isced11 = "TOTAL", unit = "PC", age = "Y_GE15", freq = "A"),
-#'   y_filters = list(unit = "YR", age = "Y_LT1", freq = "A")
+#'   x_filters = list(isced11 = "TOTAL", sex = "F"),
+#'   y_filters = list(age = "Y2", sex = "F")
 #' )
 #' }
 mi_data <- function(
@@ -133,11 +133,11 @@ mi_data <- function(
     tibble::as_tibble()
   
   # Check for duplicate values within each geo for x and (if applicable) y.
-  duplicate_issues <- response_data %>%
-    dplyr::group_by(geo) %>%
+  duplicate_issues <- response_data |>
+    dplyr::group_by(.data$geo) |>
     dplyr::summarise(
-      distinct_x = dplyr::n_distinct(x),
-      distinct_y = if ("y" %in% names(response_data)) dplyr::n_distinct(y) else NA_integer_,
+      distinct_x = dplyr::n_distinct(.data$x),
+      distinct_y = if ("y" %in% names(response_data)) dplyr::n_distinct(.data$y) else NA_integer_,
       .groups = "drop"
     )
   
@@ -151,11 +151,11 @@ mi_data <- function(
     if (x_issue) {
       available_filters <- mi_source_filters(source_name = x_source, year = year, level = level)
       # Determine which filter fields have more than one option
-      multi_option_fields <- available_filters %>%
-        dplyr::group_by(field) %>%
-        dplyr::summarise(n_options = dplyr::n_distinct(value), .groups = "drop") %>%
-        dplyr::filter(n_options > 1) %>%
-        dplyr::pull(field)
+      multi_option_fields <- available_filters |>
+        dplyr::group_by(.data$field) |>
+        dplyr::summarise(n_options = dplyr::n_distinct(.data$value), .groups = "drop") |>
+        dplyr::filter(.data$n_options > 1) |>
+        dplyr::pull(.data$field)
       # Only require filters for those fields with multiple options.
       missing_x_filters <- setdiff(multi_option_fields, names(x_filters))
     }
@@ -164,11 +164,11 @@ mi_data <- function(
     missing_y_filters <- character(0)
     if (y_issue) {
       available_y_filters <- mi_source_filters(source_name = y_source, year = year, level = level)
-      multi_option_y_fields <- available_y_filters %>%
-        dplyr::group_by(field) %>%
-        dplyr::summarise(n_options = dplyr::n_distinct(value), .groups = "drop") %>%
-        dplyr::filter(n_options > 1) %>%
-        dplyr::pull(field)
+      multi_option_y_fields <- available_y_filters |>
+        dplyr::group_by(.data$field) |>
+        dplyr::summarise(n_options = dplyr::n_distinct(.data$value), .groups = "drop") |>
+        dplyr::filter(.data$n_options > 1) |>
+        dplyr::pull(.data$field)
       missing_y_filters <- setdiff(multi_option_y_fields, names(y_filters))
     }
   

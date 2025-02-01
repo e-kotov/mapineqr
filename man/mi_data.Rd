@@ -52,7 +52,7 @@ mi_data(
   x_source = "TGS00010",
   year = 2020,
   level = "2",
-  x_filters = list(isced11 = "TOTAL", unit = "PC", age = "Y_GE15", freq = "A")
+  x_filters = list(isced11 = "TOTAL", sex = "F")
 )
 
 # Bivariate example
@@ -61,8 +61,8 @@ mi_data(
   y_source = "DEMO_R_MLIFEXP",
   year = 2020,
   level = "2",
-  x_filters = list(isced11 = "TOTAL", unit = "PC", age = "Y_GE15", freq = "A"),
-  y_filters = list(unit = "YR", age = "Y_LT1", freq = "A")
+  x_filters = list(isced11 = "TOTAL", sex = "F"),
+  y_filters = list(age = "Y2", sex = "F")
 )
 }
 }
