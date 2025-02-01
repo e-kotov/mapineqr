@@ -87,7 +87,7 @@
 
 
 <dt id="arg-limit">limit<a class="anchor" aria-label="anchor" href="#arg-limit"></a></dt>
-<dd><p>An <code>integer</code> specifying the maximum number of results to return. Default is 2500.</p></dd>
+<dd><p>An <code>integer</code> specifying the maximum number of results to return. Default is 2500. This default should be enough for most uses, as it is well above the number of NUTS 3 regions in the EU. The maximum limited by the API is 10000.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -110,22 +110,22 @@
 <span class="r-in"><span>  x_source <span class="op">=</span> <span class="st">"TGS00010"</span>,</span></span>
 <span class="r-in"><span>  year <span class="op">=</span> <span class="fl">2020</span>,</span></span>
 <span class="r-in"><span>  level <span class="op">=</span> <span class="st">"2"</span>,</span></span>
-<span class="r-in"><span>  x_filters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>isced11 <span class="op">=</span> <span class="st">"TOTAL"</span>, unit <span class="op">=</span> <span class="st">"PC"</span>, age <span class="op">=</span> <span class="st">"Y_GE15"</span>, freq <span class="op">=</span> <span class="st">"A"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  x_filters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>isced11 <span class="op">=</span> <span class="st">"TOTAL"</span>, sex <span class="op">=</span> <span class="st">"F"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 910 × 6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 334 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    geo   geo_name         geo_source geo_year x_year     x</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> AL01  Veri             NUTS       2021     2020    <span style="color: #BB0000;">NA</span>  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> AL02  Qender           NUTS       2021     2020    <span style="color: #BB0000;">NA</span>  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> AL03  Jug              NUTS       2021     2020    <span style="color: #BB0000;">NA</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> AT11  Burgenland       NUTS       2021     2020     4.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> AT11  Burgenland       NUTS       2021     2020    <span style="color: #BB0000;">NA</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> AT11  Burgenland       NUTS       2021     2020     4.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> AT12  Niederösterreich NUTS       2021     2020     4.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> AT12  Niederösterreich NUTS       2021     2020     4  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> AT12  Niederösterreich NUTS       2021     2020     4.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> AT13  Wien             NUTS       2021     2020    10.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 900 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> AT11  Burgenland       NUTS       2021     2020    <span style="color: #BB0000;">NA</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> AT12  Niederösterreich NUTS       2021     2020     4  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> AT13  Wien             NUTS       2021     2020    10  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> AT21  Kärnten          NUTS       2021     2020     5  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> AT22  Steiermark       NUTS       2021     2020     4.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> AT31  Oberösterreich   NUTS       2021     2020     3.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> AT32  Salzburg         NUTS       2021     2020     3  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 324 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Bivariate example</span></span></span>
 <span class="r-in"><span><span class="fu">mi_data</span><span class="op">(</span></span></span>
@@ -133,23 +133,23 @@
 <span class="r-in"><span>  y_source <span class="op">=</span> <span class="st">"DEMO_R_MLIFEXP"</span>,</span></span>
 <span class="r-in"><span>  year <span class="op">=</span> <span class="fl">2020</span>,</span></span>
 <span class="r-in"><span>  level <span class="op">=</span> <span class="st">"2"</span>,</span></span>
-<span class="r-in"><span>  x_filters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>isced11 <span class="op">=</span> <span class="st">"TOTAL"</span>, unit <span class="op">=</span> <span class="st">"PC"</span>, age <span class="op">=</span> <span class="st">"Y_GE15"</span>, freq <span class="op">=</span> <span class="st">"A"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  y_filters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>unit <span class="op">=</span> <span class="st">"YR"</span>, age <span class="op">=</span> <span class="st">"Y_LT1"</span>, freq <span class="op">=</span> <span class="st">"A"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  x_filters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>isced11 <span class="op">=</span> <span class="st">"TOTAL"</span>, sex <span class="op">=</span> <span class="st">"F"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  y_filters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>age <span class="op">=</span> <span class="st">"Y2"</span>, sex <span class="op">=</span> <span class="st">"F"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2,434 × 8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    geo   geo_name   geo_source geo_year x_year y_year     x     y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> AL01  Veri       NUTS       2018     2020   2020    <span style="color: #BB0000;">NA</span>    75.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> AL01  Veri       NUTS       2018     2020   2020    <span style="color: #BB0000;">NA</span>    77.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> AL01  Veri       NUTS       2018     2020   2020    <span style="color: #BB0000;">NA</span>    79.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> AL02  Qender     NUTS       2018     2020   2020    <span style="color: #BB0000;">NA</span>    78.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> AL02  Qender     NUTS       2018     2020   2020    <span style="color: #BB0000;">NA</span>    81.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> AL02  Qender     NUTS       2018     2020   2020    <span style="color: #BB0000;">NA</span>    76.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> AL03  Jug        NUTS       2018     2020   2020    <span style="color: #BB0000;">NA</span>    76.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> AL03  Jug        NUTS       2018     2020   2020    <span style="color: #BB0000;">NA</span>    78.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> AL03  Jug        NUTS       2018     2020   2020    <span style="color: #BB0000;">NA</span>    74.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> AT11  Burgenland NUTS       2018     2020   2020     4.2  79.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2,424 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 332 × 8</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    geo   geo_name         geo_source geo_year x_year y_year     x     y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> AL01  Veri             NUTS       2018     2020   2020    <span style="color: #BB0000;">NA</span>    78.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> AL02  Qender           NUTS       2018     2020   2020    <span style="color: #BB0000;">NA</span>    80.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> AL03  Jug              NUTS       2018     2020   2020    <span style="color: #BB0000;">NA</span>    76.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> AT11  Burgenland       NUTS       2018     2020   2020    <span style="color: #BB0000;">NA</span>    81.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> AT12  Niederösterreich NUTS       2018     2020   2020     4    81.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> AT13  Wien             NUTS       2018     2020   2020    10    80.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> AT21  Kärnten          NUTS       2018     2020   2020     5    82.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> AT22  Steiermark       NUTS       2018     2020   2020     4.4  81.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> AT31  Oberösterreich   NUTS       2018     2020   2020     3.7  82.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> AT32  Salzburg         NUTS       2018     2020   2020     3    82.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 322 more rows</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
