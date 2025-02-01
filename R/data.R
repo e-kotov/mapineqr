@@ -21,6 +21,7 @@
 #' * `x`: the value of the univariate variable.
 #' * `y` (optional): the value of the y variable (only included when `y_source` is provided).
 #' 
+#' @importFrom rlang .data
 #' @export
 #'
 #' @examples
@@ -140,30 +141,62 @@ mi_data <- function(
       .groups = "drop"
     )
   
-  # Determine if any geo has multiple distinct values
   x_issue <- any(duplicate_issues$distinct_x > 1)
   y_issue <- if ("y" %in% names(response_data)) any(duplicate_issues$distinct_y > 1) else FALSE
   
+  # Only perform additional filter checking if duplicate geos exist
   if (x_issue || y_issue) {
-    msg <- "The API returned duplicate values for some geographic regions. This likely indicates that not all necessary filters were specified for the data source(s)."
+    # --- For the x variable ---
+    missing_x_filters <- character(0)
     if (x_issue) {
-      msg <- paste0(
-        msg,
-        "\n\nFor the 'x' variable: please check the 'x_filters' argument provided to mi_data() for the data source '", x_source, "'.",
-        "\nYou can review the available filters by running:\n",
-        "  mi_source_filters(source_name = '", x_source, "', year = ", year, ", level = '", level, "')\n"
-      )
+      available_filters <- mi_source_filters(source_name = x_source, year = year, level = level)
+      # Determine which filter fields have more than one option
+      multi_option_fields <- available_filters %>%
+        dplyr::group_by(field) %>%
+        dplyr::summarise(n_options = dplyr::n_distinct(value), .groups = "drop") %>%
+        dplyr::filter(n_options > 1) %>%
+        dplyr::pull(field)
+      # Only require filters for those fields with multiple options.
+      missing_x_filters <- setdiff(multi_option_fields, names(x_filters))
     }
+  
+    # --- For the y variable (if applicable) ---
+    missing_y_filters <- character(0)
     if (y_issue) {
-      msg <- paste0(
-        msg,
-        "\n\nFor the 'y' variable: please check the 'y_filters' argument provided to mi_data() for the data source '", y_source, "'.",
-        "\nYou can review the available filters by running:\n",
-        "  mi_source_filters(source_name = '", y_source, "', year = ", year, ", level = '", level, "')\n"
-      )
+      available_y_filters <- mi_source_filters(source_name = y_source, year = year, level = level)
+      multi_option_y_fields <- available_y_filters %>%
+        dplyr::group_by(field) %>%
+        dplyr::summarise(n_options = dplyr::n_distinct(value), .groups = "drop") %>%
+        dplyr::filter(n_options > 1) %>%
+        dplyr::pull(field)
+      missing_y_filters <- setdiff(multi_option_y_fields, names(y_filters))
     }
-    stop(msg)
+  
+    # Only raise an error if any missing filter is found among fields with multiple options.
+    if (length(missing_x_filters) > 0 || length(missing_y_filters) > 0) {
+      msg <- "The API returned duplicate values for some geographic regions. This may indicate that not all necessary filters were specified."
+      if (length(missing_x_filters) > 0) {
+        msg <- paste0(
+          msg,
+          "\n\nFor the 'x' variable (source: '", x_source, "'):",
+          "\n  The following filter fields (with multiple available options) were not specified: ",
+          paste(missing_x_filters, collapse = ", "),
+          "\nYou can review available filters by running:\n  mi_source_filters(source_name = '", x_source, "', year = ", year, ", level = '", level, "')"
+        )
+      }
+      if (length(missing_y_filters) > 0) {
+        msg <- paste0(
+          msg,
+          "\n\nFor the 'y' variable (source: '", y_source, "'):",
+          "\n  The following filter fields (with multiple available options) were not specified: ",
+          paste(missing_y_filters, collapse = ", "),
+          "\nYou can review available filters by running:\n  mi_source_filters(source_name = '", y_source, "', year = ", year, ", level = '", level, "')"
+        )
+      }
+      stop(msg)
+    }
   }
+
 
   
   # Define expected columns based on whether y_source is specified
