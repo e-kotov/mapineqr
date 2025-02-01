@@ -16,7 +16,7 @@ mi_source_filters(source_name, year, level, filters = list(), limit = 2500)
 \item{filters}{A \verb{named list} where the names are the filter fields and
 the values are the selected values for those fields. Default is an empty list.}
 
-\item{limit}{An \code{integer} specifying the maximum number of results to return. Default is 2500.}
+\item{limit}{An \code{integer} specifying the maximum number of results to return. Default is 2500. This default should be enough for most uses, as it is well above the number of NUTS 3 regions in the EU. The maximum limited by the API is 10000.}
 }
 \value{
 A \code{tibble} with the fields, labels, and their possible values for filtering.

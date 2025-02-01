@@ -27,7 +27,7 @@ mi_data(
 
 \item{y_filters}{(Optional) A \verb{named list} where the names are the filter fields for the y variable and the values are the selected values for those fields. Default is \code{NULL}. To find out which filters to use, use \code{\link{mi_source_filters}} with the desired \code{source_name}.}
 
-\item{limit}{An \code{integer} specifying the maximum number of results to return. Default is 2500.}
+\item{limit}{An \code{integer} specifying the maximum number of results to return. Default is 2500. This default should be enough for most uses, as it is well above the number of NUTS 3 regions in the EU. The maximum limited by the API is 10000.}
 }
 \value{
 A \code{tibble} with the following columns:
@@ -52,7 +52,7 @@ mi_data(
   x_source = "TGS00010",
   year = 2020,
   level = "2",
-  x_filters = list(isced11 = "TOTAL", unit = "PC", age = "Y_GE15", freq = "A")
+  x_filters = list(isced11 = "TOTAL", sex = "F")
 )
 
 # Bivariate example
@@ -61,8 +61,8 @@ mi_data(
   y_source = "DEMO_R_MLIFEXP",
   year = 2020,
   level = "2",
-  x_filters = list(isced11 = "TOTAL", unit = "PC", age = "Y_GE15", freq = "A"),
-  y_filters = list(unit = "YR", age = "Y_LT1", freq = "A")
+  x_filters = list(isced11 = "TOTAL", sex = "F"),
+  y_filters = list(age = "Y2", sex = "F")
 )
 }
 }
