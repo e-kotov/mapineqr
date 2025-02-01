@@ -11,7 +11,7 @@ mi_sources(level, year = NULL, limit = 2500)
 
 \item{year}{an \code{integer} of length 1, specifying the year. Optional.}
 
-\item{limit}{An \code{integer} specifying the maximum number of results to return. Default is 2500.}
+\item{limit}{An \code{integer} specifying the maximum number of results to return. Default is 2500. This default should be enough for most uses, as it is well above the number of NUTS 3 regions in the EU. The maximum limited by the API is 10000.}
 }
 \value{
 a \code{tibble} of sources with the following columns:

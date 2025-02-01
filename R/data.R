@@ -8,7 +8,7 @@
 #' @param level A `character` string specifying the NUTS level ("0", "1", "2", or "3").
 #' @param x_filters A `named list` where the names are the filter fields for the x variable and the values are the selected values for those fields. Default is an empty list. To find out which filters to use, use \code{\link{mi_source_filters}} with the desired `source_name`.
 #' @param y_filters (Optional) A `named list` where the names are the filter fields for the y variable and the values are the selected values for those fields. Default is `NULL`. To find out which filters to use, use \code{\link{mi_source_filters}} with the desired `source_name`.
-#' @param limit An `integer` specifying the maximum number of results to return. Default is 2500.
+#' @param limit An `integer` specifying the maximum number of results to return. Default is 2500. This default should be enough for most uses, as it is well above the number of NUTS 3 regions in the EU. The maximum limited by the API is 10000.
 #'
 #' @return A `tibble` with the following columns:
 #' 
@@ -58,6 +58,7 @@ mi_data <- function(
   checkmate::assert_list(x_filters, types = c("character", "NULL"))
   checkmate::assert_integerish(year, null.ok = TRUE, max.len = 1)
   checkmate::assert_list(y_filters, types = c("character", "NULL"), null.ok = TRUE)
+  checkmate::assert_number(limit, lower = 1, upper = 10000)
   if (!is.null(y_source)) checkmate::assert_string(y_source)
   
   # Build filter JSONs for X and Y
