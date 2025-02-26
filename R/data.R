@@ -11,7 +11,7 @@
 #' @param limit An `integer` specifying the maximum number of results to return. Default is 2500. This default should be enough for most uses, as it is well above the number of NUTS 3 regions in the EU. The maximum limited by the API is 10000.
 #'
 #' @return A `tibble` with the following columns:
-#' 
+#'
 #' * `geo`: code for the (NUTS) region at the requested level.
 #' * `geo_name`: name of the (NUTS) region at the requested level.
 #' * `geo_source`: source (type) of the spatial units at the requested level.
@@ -20,7 +20,7 @@
 #' * `y_year` (optional): The year of the outcome variable (Y), included in bivariate requests (only included when `y_source` is provided).
 #' * `x`: the value of the univariate variable.
 #' * `y` (optional): the value of the y variable (only included when `y_source` is provided).
-#' 
+#'
 #' @importFrom rlang .data
 #' @export
 #'
@@ -58,15 +58,19 @@ mi_data <- function(
   checkmate::assert_character(level, len = 1)
   checkmate::assert_list(x_filters, types = c("character", "NULL"))
   checkmate::assert_integerish(year, null.ok = TRUE, max.len = 1)
-  checkmate::assert_list(y_filters, types = c("character", "NULL"), null.ok = TRUE)
+  checkmate::assert_list(
+    y_filters,
+    types = c("character", "NULL"),
+    null.ok = TRUE
+  )
   checkmate::assert_number(limit, lower = 1, upper = 10000)
   if (!is.null(y_source)) checkmate::assert_string(y_source)
-  
+
   # Build filter JSONs for X and Y
   x_conditions <- lapply(names(x_filters), function(name) {
     list(field = name, value = x_filters[[name]])
   })
-  
+
   x_json <- list(
     source = x_source,
     conditions = x_conditions
@@ -89,7 +93,7 @@ mi_data <- function(
       jsonlite::toJSON(y_json, auto_unbox = TRUE)
     )
   }
-  
+
   # Build API endpoint
   base_api_endpoint <- getOption("mapineqr.base_api_endpoint")
   url_endpoint <- if (is.null(y_source)) {
@@ -97,7 +101,7 @@ mi_data <- function(
   } else {
     paste0(base_api_endpoint, "get_xy_data/items.json")
   }
-  
+
   # Prepare query parameters
   query_params <- list(
     `_level` = level,
@@ -116,7 +120,7 @@ mi_data <- function(
   if (!is.null(y_source) && !is.null(y_filters)) {
     query_params$`Y_JSON` <- y_json_string
   }
-  
+
   # Perform API request
   request <- httr2::request(url_endpoint) |>
     httr2::req_headers(
@@ -127,102 +131,157 @@ mi_data <- function(
     httr2::req_method("GET")
 
   response <- request |> httr2::req_perform()
-  
+
   # Parse response
-  response_data <- httr2::resp_body_json(response, simplifyVector = TRUE) |> 
+  response_data <- httr2::resp_body_json(response, simplifyVector = TRUE) |>
     tibble::as_tibble()
-  
-  # Check for duplicate values within each geo for x and (if applicable) y.
-  duplicate_issues <- response_data |>
-    dplyr::group_by(.data$geo) |>
-    dplyr::summarise(
-      distinct_x = dplyr::n_distinct(.data$x),
-      distinct_y = if ("y" %in% names(response_data)) dplyr::n_distinct(.data$y) else NA_integer_,
-      .groups = "drop"
-    )
-  
-  x_issue <- any(duplicate_issues$distinct_x > 1)
-  y_issue <- if ("y" %in% names(response_data)) any(duplicate_issues$distinct_y > 1) else FALSE
-  
-  # Only perform additional filter checking if duplicate geos exist
-  if (x_issue || y_issue) {
-    # --- For the x variable ---
-    missing_x_filters <- character(0)
-    if (x_issue) {
-      available_filters <- mi_source_filters(source_name = x_source, year = year, level = level)
-      # Determine which filter fields have more than one option
-      multi_option_fields <- available_filters |>
-        dplyr::group_by(.data$field) |>
-        dplyr::summarise(n_options = dplyr::n_distinct(.data$value), .groups = "drop") |>
-        dplyr::filter(.data$n_options > 1) |>
-        dplyr::pull(.data$field)
-      # Only require filters for those fields with multiple options.
-      missing_x_filters <- setdiff(multi_option_fields, names(x_filters))
-    }
-  
-    # --- For the y variable (if applicable) ---
-    missing_y_filters <- character(0)
-    if (y_issue) {
-      available_y_filters <- mi_source_filters(source_name = y_source, year = year, level = level)
-      multi_option_y_fields <- available_y_filters |>
-        dplyr::group_by(.data$field) |>
-        dplyr::summarise(n_options = dplyr::n_distinct(.data$value), .groups = "drop") |>
-        dplyr::filter(.data$n_options > 1) |>
-        dplyr::pull(.data$field)
-      missing_y_filters <- setdiff(multi_option_y_fields, names(y_filters))
-    }
-  
-    # Only raise an error if any missing filter is found among fields with multiple options.
-    if (length(missing_x_filters) > 0 || length(missing_y_filters) > 0) {
-      msg <- "The API returned duplicate values for some geographic regions. This may indicate that not all necessary filters were specified."
-      if (length(missing_x_filters) > 0) {
-        msg <- paste0(
-          msg,
-          "\n\nFor the 'x' variable (source: '", x_source, "'):",
-          "\n  The following filter fields (with multiple available options) were not specified: ",
-          paste(missing_x_filters, collapse = ", "),
-          "\nYou can review available filters by running:\n  mi_source_filters(source_name = '", x_source, "', year = ", year, ", level = '", level, "')"
+
+  if (getOption("mapineq.skip_filter_check") == FALSE) {
+    # Check for duplicate values within each geo for x and (if applicable) y.
+    duplicate_issues <- response_data |>
+      dplyr::group_by(.data$geo) |>
+      dplyr::summarise(
+        distinct_x = dplyr::n_distinct(.data$x),
+        distinct_y = if ("y" %in% names(response_data))
+          dplyr::n_distinct(.data$y) else NA_integer_,
+        .groups = "drop"
+      )
+
+    x_issue <- any(duplicate_issues$distinct_x > 1)
+    y_issue <- if ("y" %in% names(response_data))
+      any(duplicate_issues$distinct_y > 1) else FALSE
+
+    # Only perform additional filter checking if duplicate geos exist
+    if (x_issue || y_issue) {
+      # --- For the x variable ---
+      missing_x_filters <- character(0)
+      if (x_issue) {
+        available_filters <- mi_source_filters(
+          source_name = x_source,
+          year = year,
+          level = level
         )
+        # Determine which filter fields have more than one option
+        multi_option_fields <- available_filters |>
+          dplyr::group_by(.data$field) |>
+          dplyr::summarise(
+            n_options = dplyr::n_distinct(.data$value),
+            .groups = "drop"
+          ) |>
+          dplyr::filter(.data$n_options > 1) |>
+          dplyr::pull(.data$field)
+        # Only require filters for those fields with multiple options.
+        missing_x_filters <- setdiff(multi_option_fields, names(x_filters))
       }
-      if (length(missing_y_filters) > 0) {
-        msg <- paste0(
-          msg,
-          "\n\nFor the 'y' variable (source: '", y_source, "'):",
-          "\n  The following filter fields (with multiple available options) were not specified: ",
-          paste(missing_y_filters, collapse = ", "),
-          "\nYou can review available filters by running:\n  mi_source_filters(source_name = '", y_source, "', year = ", year, ", level = '", level, "')"
+
+      # --- For the y variable (if applicable) ---
+      missing_y_filters <- character(0)
+      if (y_issue) {
+        available_y_filters <- mi_source_filters(
+          source_name = y_source,
+          year = year,
+          level = level
         )
+        multi_option_y_fields <- available_y_filters |>
+          dplyr::group_by(.data$field) |>
+          dplyr::summarise(
+            n_options = dplyr::n_distinct(.data$value),
+            .groups = "drop"
+          ) |>
+          dplyr::filter(.data$n_options > 1) |>
+          dplyr::pull(.data$field)
+        missing_y_filters <- setdiff(multi_option_y_fields, names(y_filters))
       }
-      stop(msg)
+
+      # Only raise an error if any missing filter is found among fields with multiple options.
+      if (length(missing_x_filters) > 0 || length(missing_y_filters) > 0) {
+        msg <- "The API returned duplicate values for some geographic regions. This may indicate that not all necessary filters were specified."
+        if (length(missing_x_filters) > 0) {
+          msg <- paste0(
+            msg,
+            "\n\nFor the 'x' variable (source: '",
+            x_source,
+            "'):",
+            "\n  The following filter fields (with multiple available options) were not specified: ",
+            paste(missing_x_filters, collapse = ", "),
+            "\nYou can review available filters by running:\n  mi_source_filters(source_name = '",
+            x_source,
+            "', year = ",
+            year,
+            ", level = '",
+            level,
+            "')"
+          )
+        }
+        if (length(missing_y_filters) > 0) {
+          msg <- paste0(
+            msg,
+            "\n\nFor the 'y' variable (source: '",
+            y_source,
+            "'):",
+            "\n  The following filter fields (with multiple available options) were not specified: ",
+            paste(missing_y_filters, collapse = ", "),
+            "\nYou can review available filters by running:\n  mi_source_filters(source_name = '",
+            y_source,
+            "', year = ",
+            year,
+            ", level = '",
+            level,
+            "')"
+          )
+        }
+        stop(msg)
+      }
     }
   }
 
-
-  
   # Define expected columns based on whether y_source is specified
   if (is.null(y_source)) {
-    expected_columns <- c("geo", "geo_name", "geo_source", "geo_year", "data_year", "x")
+    expected_columns <- c(
+      "geo",
+      "geo_name",
+      "geo_source",
+      "geo_year",
+      "data_year",
+      "x"
+    )
   } else {
-    expected_columns <- c("geo", "geo_name", "geo_source", "geo_year", 
-                          "predictor_year", "outcome_year", "x", "y")
+    expected_columns <- c(
+      "geo",
+      "geo_name",
+      "geo_source",
+      "geo_year",
+      "predictor_year",
+      "outcome_year",
+      "x",
+      "y"
+    )
   }
 
   # Check for missing expected columns
   missing_columns <- setdiff(expected_columns, colnames(response_data))
 
   if (length(missing_columns) > 0) {
-    stop("The following expected columns are missing from the response: ", paste(missing_columns, collapse = ", "), ". The API may be down or might have changed. Please try again later. If the error persists, please open an issue on GitHub at <https://github.com/e-kotov/mapineqr/issues>.")
+    stop(
+      "The following expected columns are missing from the response: ",
+      paste(missing_columns, collapse = ", "),
+      ". The API may be down or might have changed. Please try again later. If the error persists, please open an issue on GitHub at <https://github.com/e-kotov/mapineqr/issues>."
+    )
   }
 
   # Select and reorder columns using dplyr
-  response_data <- response_data |> 
-    dplyr::select(dplyr::all_of(expected_columns)) |> 
-    dplyr::rename_with(~ dplyr::case_when(
-      .x == "predictor_year" ~ "x_year",
-      .x == "data_year" & !"predictor_year" %in% colnames(response_data) ~ "x_year",
-      .x == "outcome_year" ~ "y_year",
-      TRUE ~ .x
-    ), .cols = dplyr::any_of(c("predictor_year", "outcome_year", "data_year")))
-  
+  response_data <- response_data |>
+    dplyr::select(dplyr::all_of(expected_columns)) |>
+    dplyr::rename_with(
+      ~ dplyr::case_when(
+        .x == "predictor_year" ~ "x_year",
+        .x == "data_year" & !"predictor_year" %in% colnames(response_data) ~
+          "x_year",
+        .x == "outcome_year" ~ "y_year",
+        TRUE ~ .x
+      ),
+      .cols = dplyr::any_of(c("predictor_year", "outcome_year", "data_year"))
+    )
+
   return(response_data)
 }
